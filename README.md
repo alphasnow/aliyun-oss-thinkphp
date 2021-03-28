@@ -26,11 +26,19 @@
     ALIYUN_OSS_ENDPOINT=oss-cn-shanghai.aliyuncs.com
     ALIYUN_OSS_IS_CNAME=false
     ALIYUN_OSS_CDN_DOMAIN=
-    ALIYUN_OSS_IS_CNAME=false
     ALIYUN_OSS_SSL=false
     ```
 
 ## 快速使用
+
+#### 文件上传
+```php
+use think\facade\Filesystem;
+$file = request()->file('image');
+$savename = Filesystem::disk('aliyun')->putFile( 'image', $file);
+```
+
+> https://www.kancloud.cn/manual/thinkphp6_0/1037639
 
 #### 文件写入
 ```php
