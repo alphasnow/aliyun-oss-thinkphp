@@ -1,5 +1,12 @@
 # Aliyun-oss-filesystem for ThinkPHP
 
+[![Latest Stable Version](https://poser.pugx.org/alphasnow/aliyun-oss-thinkphp/v/stable)](https://packagist.org/packages/alphasnow/aliyun-oss-thinkphp)
+[![License](https://poser.pugx.org/alphasnow/aliyun-oss-thinkphp/license)](https://packagist.org/packages/alphasnow/aliyun-oss-thinkphp)
+[![Build Status](https://travis-ci.com/alphasnow/aliyun-oss-thinkphp.svg?branch=master)](https://travis-ci.com/alphasnow/aliyun-oss-thinkphp)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alphasnow/aliyun-oss-thinkphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alphasnow/aliyun-oss-thinkphp/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/alphasnow/aliyun-oss-thinkphp/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/alphasnow/aliyun-oss-thinkphp/?branch=master)
+
+
 扩展借鉴了一些优秀的代码，综合各方，同时做了更多优化，将会添加更多完善的接口和插件，打造ThinkPHP最好的OSS Filesystem扩展
 
 ## 运行环境
