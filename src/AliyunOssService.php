@@ -16,11 +16,7 @@ class AliyunOssService extends BaseService
         $appConfig = $this->app->get('config');
         if (!$appConfig->has('filesystem.disks.aliyun')) {
             $filesystemConfig = $appConfig->get('filesystem');
-            if ($appConfig->has('aliyun-oss')) {
-                $filesystemConfig['disks']['aliyun'] = $appConfig->get('aliyun-oss');
-            } else {
-                $filesystemConfig['disks']['aliyun'] = require __DIR__.'/config/config.php';
-            }
+            $filesystemConfig['disks']['aliyun'] = require __DIR__.'/config/config.php';
             $filesystemConfig['disks']['aliyun']['type'] = AliyunOssDriver::class;
             $appConfig->set($filesystemConfig, 'filesystem');
         }
@@ -51,23 +47,22 @@ class AliyunOssService extends BaseService
 
         $this->app->bind('aliyun-oss.adapter', function () {
             $config = $this->app->get('config')->get('filesystem.disks.aliyun');
-            $client = $this->app->get(OssClient::class);
+            $client = $this->app->get('aliyun-oss.client');
 
-            $adapter = new AliyunOssAdapter($config, $client);
+            $adapter = new AliyunOssAdapter($client, $config);
 
             return $adapter;
         });
 
-        $this->app->bind(OssClient::class, function () {
+        $this->app->bind('aliyun-oss.client', function () {
             $config = $this->app->get('config')->get('filesystem.disks.aliyun');
             return new OssClient(
-                $config['accessId'],
-                $config['accessKey'],
+                $config['access_id'],
+                $config['access_key'],
                 $config['endpoint'],
-                $config['isCname'],
-                $config['securityToken']
+                $config['is_cname'],
+                $config['security_token']
             );
         });
-        $this->app->bind('aliyun-oss.client', OssClient::class);
     }
 }

@@ -10,7 +10,7 @@ use OSS\OssClient;
 
 /**
  * Class AliyunOssAdapter
- * @package AlphaSnow\AliyunOss
+ * @package AlphaSnow\AliyunOssThink
  */
 class AliyunOssAdapter extends BaseAdapter implements CanOverwriteFiles
 {
@@ -19,7 +19,7 @@ class AliyunOssAdapter extends BaseAdapter implements CanOverwriteFiles
      */
     protected $config;
 
-    public function __construct(array $config, OssClient $client)
+    public function __construct(OssClient $client, array $config)
     {
         $this->config = $config;
         parent::__construct($client, $config['bucket'], $config['prefix'], $config['options']);
@@ -50,14 +50,14 @@ class AliyunOssAdapter extends BaseAdapter implements CanOverwriteFiles
     {
         $url = '';
 
-        if ($this->config['ssl']) {
+        if ($this->config['is_ssl']) {
             $url .= 'https://';
         } else {
             $url .= 'http://';
         }
 
-        if ($this->config['isCname']) {
-            $url .= $this->config['cdnDomain'];
+        if ($this->config['is_cname']) {
+            $url .= $this->config['cdn_domain'];
         } else {
             $url .= $this->config['bucket'] . '.' . $this->config['endpoint'];
         }
@@ -83,6 +83,6 @@ class AliyunOssAdapter extends BaseAdapter implements CanOverwriteFiles
         $clientOptions = $this->getOptionsFromConfig(new Config($options));
         $timeout = $expiration->getTimestamp() - time();
 
-        return $this->client->signUrl($this->bucket, $object, $timeout, $clientOptions);
+        return $this->client->signUrl($this->bucket, $object, $timeout, OssClient::OSS_HTTP_GET, $clientOptions);
     }
 }

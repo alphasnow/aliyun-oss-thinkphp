@@ -33,7 +33,7 @@
     ALIYUN_OSS_ENDPOINT=oss-cn-shanghai.aliyuncs.com
     ALIYUN_OSS_IS_CNAME=false
     ALIYUN_OSS_CDN_DOMAIN=
-    ALIYUN_OSS_SSL=false
+    ALIYUN_OSS_IS_SSL=false
     ```
 
 ## 快速使用

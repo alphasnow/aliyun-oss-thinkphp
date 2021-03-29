@@ -6,13 +6,15 @@ use OSS\OssClient;
 use think\Facade as BaseFacade;
 
 /**
- * Class AliyunOssClient
- * @package AlphaSnow\AliyunOss
+ * @see \OSS\OssClient
  */
 class AliyunOssClient extends BaseFacade
 {
-    public static function getFacadeAccessor()
+    /**
+     * @return string
+     */
+    protected static function getFacadeAccessor()
     {
-        return OssClient::class;
+        return 'aliyun-oss.client';
     }
 }

@@ -21,7 +21,7 @@ class DriverTest extends TestCase
         $ossClient = Mockery::mock(OssClient::class, function ($mock) {
             $mock->makePartial();
         });
-        $this->app->instance(OssClient::class, $ossClient);
+        $this->app->instance('aliyun-oss.client', $ossClient);
         $this->ossClient = $ossClient;
 
         $this->filesystem = Filesystem::disk('aliyun');
@@ -30,8 +30,7 @@ class DriverTest extends TestCase
     public function testPut()
     {
         $this->ossClient->shouldReceive([
-            'putObject' => null,
-            'doesObjectExist' => false,
+            'putObject' => null
         ]);
 
         $status = $this->filesystem->write('tests/foo.txt', 'bar');
