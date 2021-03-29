@@ -2,7 +2,6 @@
 
 namespace AlphaSnow\AliyunOssThink;
 
-use OSS\OssClient;
 use think\Facade as BaseFacade;
 
 /**
